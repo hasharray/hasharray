@@ -16,12 +16,15 @@
         @import "masthead";
         @import "post";
         @import "pagination";
+        @import "advert";
       {% endcapture %}
 
       {{ style | scssify | trim }}
     </style>
 
-    {% include google_ads.html %}
+    {% if site.google_ad_client %}
+      {% include google_ads.html %}
+    {% endif %}
 
     {% seo %}
   </head>
