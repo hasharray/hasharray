@@ -1,0 +1,12 @@
+# Site settings
+title: Web Development Ninja
+
+# Google settings
+google_tracking_id: UA-77924009-2
+
+gems:
+  - jekyll-feed
+  - jekyll-gist
+  - jekyll-paginate
+  - jekyll-seo-tag
+  - jekyll-sitemap

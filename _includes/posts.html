@@ -1,0 +1,17 @@
+<ul class="post-list">
+  {% assign posts = include.posts | default: site.posts %}
+  {% for post in posts %}
+    <li class="post">
+      <h1 class="post-title">
+        <a href="{{ post.url | prepend: site.baseurl }}">
+          {{ post.title }}
+        </a>
+      </h1>
+
+      <time datetime="{{ post.date | date_to_xmlschema }}" class="post-date">{{ post.date | date_to_string }}</time>
+
+      {{ post.excerpt }}
+    </li>
+  {% endfor %}
+</div>
+

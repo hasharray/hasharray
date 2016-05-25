@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style type="text/css">
+      {% capture style %}
+        @import "base";
+        @import "type";
+
+        @import "syntax";
+        @import "code";
+
+        @import "layout";
+        @import "masthead";
+        @import "post";
+        @import "pagination";
+      {% endcapture %}
+
+      {{ style | scssify | trim }}
+    </style>
+
+    {% seo %}
+  </head>
+
+  <body class="container">
+    {% include masthead.html %}
+
+    <main class="content">
+      {{ content }}
+    </main>
+
+    {% include colophon.html %}
+
+    {% if site.google_tracking_id %}
+      {% include google_analytics.html %}
+    {% endif %}
+  </body>
+</html>
