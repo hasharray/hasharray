@@ -1,5 +1,6 @@
 # Site settings
 title: Web Development Ninja
+permalink: /:categories/:slug
 
 # Google settings
 google_tracking_id: UA-77924009-2
