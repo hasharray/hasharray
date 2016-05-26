@@ -1,15 +1,18 @@
 // Masthead
 //
 
+$masthead-background-color: #333333!default;
+$masthead-color: #ffffff!default;
+
 .masthead {
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-  margin-bottom: 3rem;
+  background-color: $masthead-background-color;
+  color: $masthead-color;
 }
 
 .masthead-title {
   margin-top: 0;
   margin-bottom: 0;
+  color: inherit;
 
   a {
     color: inherit;
