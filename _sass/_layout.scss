@@ -4,23 +4,25 @@
 .container {
   display: flex;
   flex-direction: column;
-  padding-left:  1.5rem;
-  padding-right: 1.5rem;
-}
-
-.masthead {
+  flex-wrap: wrap;
 }
 
 .content {
+  display: flex;
+  flex-direction: row;
   flex: 1;
 }
 
-.colophon {
-  margin-bottom: 2rem;
+.content-main {
+  flex: 1;
 }
 
+.content-sidebar {
+  flex: 0 0 300px;
+}
+
+.masthead,
 .content,
 .colophon {
-  max-width: 38em;
-  align-self: center;
+  padding: 2em 4em;
 }

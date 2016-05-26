@@ -23,17 +23,26 @@
     </style>
 
     {% if site.google_ad_client %}
-      {% include google_ads.html %}
+      {% include google_adsense.html %}
     {% endif %}
 
+    {% feed_meta %}
     {% seo %}
   </head>
 
   <body class="container">
     {% include masthead.html %}
+    {% include google_ad.html slot="6811327623" %}
 
     <main class="content">
-      {{ content }}
+      <section class="content-main">
+        {{ content }}
+      </section>
+
+      <aside class="content-sidebar">
+        {% include google_ad.html slot="1822724824" %}
+        {% include google_ad.html slot="1403922425" %}
+      </aside>
     </main>
 
     {% include colophon.html %}
