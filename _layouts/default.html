@@ -33,7 +33,9 @@
 
   <body class="container">
     {% include masthead.html %}
-    {% include google_ad.html slot="6811327623" %}
+    {% if site.google_ad_client %}
+      {% include google_ad.html slot="6811327623" %}
+    {% endif %}
 
     <main class="content">
       <section class="content-main">
@@ -41,8 +43,10 @@
       </section>
 
       <aside class="content-sidebar">
-        {% include google_ad.html slot="1822724824" %}
-        {% include google_ad.html slot="1403922425" %}
+        {% if site.google_ad_client %}
+          {% include google_ad.html slot="1822724824" %}
+          {% include google_ad.html slot="1403922425" %}
+        {% endif %}
       </aside>
     </main>
 
