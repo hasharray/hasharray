@@ -42,12 +42,12 @@
         {{ content }}
       </section>
 
-      <aside class="content-sidebar">
-        {% if site.google_ad_client %}
+      {% if site.google_ad_client %}
+        <aside class="content-sidebar">
           {% include google_ad.html slot="1822724824" %}
           {% include google_ad.html slot="1403922425" %}
-        {% endif %}
-      </aside>
+        </aside>
+      {% endif %}
     </main>
 
     {% include colophon.html %}

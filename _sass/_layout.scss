@@ -11,11 +11,13 @@
 .content {
   display: flex;
   flex-direction: row;
+  justify-content: center;
+
   flex: 1;
 }
 
 .content-main {
-  flex: 1;
+  flex: 0 0 40em;
 }
 
 .content-sidebar {
