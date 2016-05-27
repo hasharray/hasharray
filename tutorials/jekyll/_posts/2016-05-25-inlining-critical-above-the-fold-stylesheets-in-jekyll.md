@@ -1,13 +1,7 @@
 ---
-layout: post
-lang: en
+layout: post 
 title: Inlining Critical Above the Fold Styles in Jekyll
-slug: inlining-critical-above-the-fold-styles-in-jekyll
-categories:
-  - tutorial
-  - jekyll
 ---
-
 
 In this tutorial we will be taking a look at how we can inline critical
 stylesheet rules that style content that appears above the fold in a Jekyll

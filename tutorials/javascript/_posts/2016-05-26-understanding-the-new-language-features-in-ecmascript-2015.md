@@ -1,9 +1,6 @@
 ---
 layout: post
 title: Understanding the new language features in ECMAScript 2015
-slug: understanding-the-new-language-features-in-ecmascript-2015
-categories:
-  - javascript
 ---
 
 In this tutorial, we will be taking a look at the new features introduced in
