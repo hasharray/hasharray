@@ -17,6 +17,7 @@
         @import "post";
         @import "pagination";
         @import "advert";
+        @import "colophon";
       {% endcapture %}
 
       {{ style | scssify | trim }}
@@ -50,5 +51,6 @@
     {% if site.google_tracking_id %}
       {% include google_analytics.html %}
     {% endif %}
+
   </body>
 </html>
