@@ -4,7 +4,7 @@ permalink: /:categories/:slug
 
 # Google settings
 google_tracking_id: UA-77924009-2
-google_ad_client: ca-pub-3538270718430385
+# google_ad_client: ca-pub-3538270718430385
 
 gems:
   - jekyll-feed
