@@ -6,48 +6,63 @@ title: Understanding the new language features in ECMAScript 2015
 In this tutorial, we will be taking a look at the new features introduced in
 the sixth edition of the JavaScript language.
 
-This edition of JavaScript introduces a lot of new language syntax
-features, it might even be the most feature packed revision to date in terms of
-language additions, and that is with some of the features scheduled, like
-comprehensions and rest and spread properties being delayed to the next
-edition.
+This edition of JavaScript introduces a lot of new language syntax features, it
+might even be the most feature packed revision to date in terms of language
+additions, and that is with some of the features scheduled, like
+comprehensions, rest and spread properties being delayed to the next edition.
 
-These features are also backwards compatible, in the sense that they are mostly
-syntactic sugar and can be desugared to older versions of the language, meaning
-we can use them even with runtimes that do not support them yet as long as we
-compile through a source to source compiler (also known as a transpiler).
+Another thing to keep in mind is that these features are also designed to be
+backwards compatible when possible, in the sense that they are mostly syntactic
+sugar and can be desugared to older versions of the language. For us as users
+this means we can use them even with runtimes that do not support them yet,
+provided that we compile it down with a source to source compiler.
 
 ## Arrow Functions
 
-Arrow functions are a function shorthand using the `=>` syntax. However, unlike
-regular functions, arrow functions are bound to the lexical scope and share the
-same lexical `this` context as the declaring code.
+Arrow functions provide us with a short hand syntax for writing functions with
+the fat arrow notation `=>`. However, unlike regular functions, arrow functions
+are bound to the lexical scope and share the same lexical `this` context as the
+declaring code.
 
 For example, previously with a normal function we would have to capture the
-value of `this`
+value of `this` if we needed to preserve it in lets say an event handler.
 
 ```javascript
-this.message = 'hello world';
 var that = this;
 
-process.nextTick(function() {
-  console.log(that.message);
-});
+setTimeout(function() {
+  console.log(that.secret);
+}, 1000);
 ```
 
-Using an arrow function we can now drop that entirely.
+Or in some cases, one might choose to use `Function#bind`
+
+```javascript
+setTimeout(function() {
+  console.log(this.secret);
+}.bind(this), 1000);
+```
+
+Using an arrow function we can now drop that completely.
 
 ```javascript
 process.nextTick(() => {
-  console.log(this.message);
+  console.log(this.secret);
 });
 ```
 
-Having a function body for an arrow function is optional, it may also be an
-expression so we can make that previous example even more concise.
+Having a function body for an arrow function is also optional, it may also be in the
+form of an an expression so we can make that previous example even more concise.
 
 ```javascript
-process.nextTick(() => console.log(this.message));
+setTimeout(() => console.log(this.message), 1000);
+```
+
+The parenthisis is also optional when there is single argument passed to the
+function, which makes one liners quite simple to do.
+
+```javascript
+[1, 2, 3].map(n => n - 1); // => 0, 1, 2
 ```
 
 ## Binary and Octal Literals
@@ -62,8 +77,8 @@ and octal numbers, denoted by `b` and `o` respectively.
 
 ## Block Scoping
 
-Block scoping are new forms of declaration for defining variables scoped to
-a single block, as opposed to variables declared with `var` which have
+Block scoping give us new forms of declaration for defining variables scoped to
+a single block, as opposed to variables declared with `var` which give us
 a function-level scope.
 
 ### Let
@@ -72,7 +87,7 @@ We can use let in-place of var to define block-local variables without having
 to worry about them clashing with variables defined elsewhere within the same
 function body.
 
-```
+```javascript
 for (var i = 0; i < 3; i++) {
    let j = i * i;
    console.log(j);
@@ -83,12 +98,16 @@ console.log(j); // => error, j is undefined
 
 ### Const
 
-`const` follows the same rules as `let`, except that the value is immutable so we can only assign to it once.
+`const` follows the same rules as `let`, except that the value is immutable so
+we can only assign to it once.
 
 ```javascript
 const PI = 3.14159265359;
 PI = 0; // => Error: PI" is read-only
 ```
+
+Note that only the identifier is immutable, meaning if its an object, the
+properties of the object can still be mutated.
 
 ## Classes
 
@@ -102,30 +121,30 @@ manner.
 
 ```javascript
 var Monster = (function(Entity) {
-    function Monster(name) {
-        Entity.call(this);
-        this.name = name;
-    }
+  function Monster(name) {
+    Entity.call(this);
+    this.name = name;
+  }
 	
 	util.inherits(Monster, Entity);
 	
-    Object.defineProperty(Monster.prototype, "scariness", {
-        get: function () {
-            return 'mild';
-        },
-        enumerable: true,
-        configurable: true
-    });
+  Object.defineProperty(Monster.prototype, "scariness", {
+    get: function () {
+      return 'mild';
+    },
+    enumerable: true,
+    configurable: true
+  });
 	
-    Monster.prototype.speak = function () {
-        Entity.speak.call(this);
-    };
-	
-    Monster.create = function () {
-        return new Monster();
-    };
-	
-    return Monster;
+  Monster.prototype.speak = function () {
+    Entity.speak.call(this);
+  };
+  
+  Monster.create = function () {
+    return new Monster();
+  };
+  
+  return Monster;
 })(Entity);
 ```
 
@@ -172,12 +191,24 @@ function f(x, y=42) {
 }
 ```
 
+Default values are only evaluated *if* no value is provided, meaning it's fine
+to use functions to provide the default value.
+
+```javascript
+function createSocket() {
+  return new Socket();
+}
+
+function use(socket=createSocket()) {
+}
+```
+
 ## Destructuring Assignments
 
 Destructuring assignment allows us to assign parts of an object to several
 variables at once.
 
-So lets say we have a `ball`,  the ball is defined as
+So lets say we have a `ball`, the ball is defined as
 
 ```javascript
 var ball = {
@@ -419,4 +450,10 @@ console.log(i18n`Hello World`);
 
 ## Conclusion
 
-ECMAScript 6 introduces a lot of convenient new features, and more or less all of them can be backported with a compiler to ECMAScript 5.
+ECMAScript 2015 (ECMAScript 6) introduces a lot of convenient syntactic sugar.
+It is pretty widely supported but you should consider using a compiler like
+[Babel](http://babeljs.io) if backwards compatability is a concern.
+
+You should also take a look at Kype Simpson's book [You Don't Know JS: ES6
+& Beyond](http://amzn.to/1t8FLU9). His whole series is actually rather good,
+I'd recommend checking them out.
