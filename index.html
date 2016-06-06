@@ -3,4 +3,22 @@ layout: default
 title: Home
 ---
 
-{% include posts.html %}
+<ul class="post-list">
+  {% assign items = site.pages | where: "layout", "post" %}
+
+  {% for item in items %}
+    <li class="post">
+      <h1 class="post-title">
+        <a href="{{ item.url | prepend: site.baseurl }}">
+          {{ item.title }}
+        </a>
+      </h1>
+
+      {% if item.date %}
+        <time datetime="{{ item.date | date_to_xmlschema }}" class="post-date">{{ item.date | date_to_string }}</time>
+      {% endif %}
+
+      {{ item.content | markdownify | split: "</p>" | first }}
+    </li>
+  {% endfor %}
+</div>
