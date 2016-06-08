@@ -2,6 +2,19 @@
 title: Web Development Ninja
 permalink: /:categories/:slug
 
+# Social settings
+twitter:
+  username: webdevelninja
+
+facebook:
+  publisher: 472349466295241
+
+social:
+  links:
+    - https://github.com/webdevelopmentninja
+    - https://twitter.com/webdevelopninja
+    - https://facebook.com/Web-Development-Ninja-472349466295241/
+
 # Google settings
 google_tracking_id: UA-77924009-2
 # google_ad_client: ca-pub-3538270718430385
