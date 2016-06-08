@@ -2,4 +2,38 @@
   <small class="colophon-copyright">
     &copy; Copyright <time datetime="{{ site.time | date_to_xmlschema }}">{{ site.time | date: '%Y' }}</time>
   </small>
+
+  <section class="colophon-social">
+    <ul class="social-list">
+      {% for url in site.social.links %}
+        {% if url contains "facebook" %}
+          {% assign name = "Facebook" %}
+        {% elsif url contains "github" "%}
+          {% assign name = "Github" %}
+        {% elsif url contains "twitter" "%}
+          {% assign name = "Twitter" %}
+        {% elsif url contains "google+" %}
+          {% assign name = "Google+" %}
+        {% elsif url contains "instagram" %}
+          {% assign name = "Instagram+" %}
+        {% elsif url contains "youtube" %}
+          {% assign name = "YouTube" %}
+        {% elsif url contains "linkedin" %}
+          {% assign name = "LinkedIn" %}
+        {% elsif url contains "myspace" %}
+          {% assign name = "MySpace" %}
+        {% elsif url contains "pinterest" %}
+          {% assign name = "Pinterest" %}
+        {% elsif url contains "soundcloud" %}
+          {% assign name = "SoundCloud" %}
+        {% elsif url contains "tumblr" %}
+          {% assign name = "Tumblr" %}
+        {% endif %}
+
+        <li class="social-item">
+          <a class="social-link" href="{{ url }}">{{ name }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+  </section>
 </footer>
