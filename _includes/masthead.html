@@ -1,8 +1,11 @@
 <header class="masthead">
-  <h3 class="masthead-title">
-    <a href="{{ site.baseurl }}/" title="Home">{{ site.title }}</a>
-    {% if site.tagline %}
-      <small>{{ site.tagline }}</small>
-    {% endif %}
-  </h3>
+  <a class="mathead-brand" href="/">
+    <figure class="logo">
+      <img class="logo-image" src="{{ site.logo }}">
+
+      <figcaption class="logo-title">
+        {{ site.title }}
+      </figcaption>
+    </figure>
+  </a>
 </header>

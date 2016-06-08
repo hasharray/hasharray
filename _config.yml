@@ -1,5 +1,7 @@
 # Site settings
 title: Web Development Ninja
+logo: /logo.png
+
 permalink: /:categories/:slug
 
 # Social settings
