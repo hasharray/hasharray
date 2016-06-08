@@ -1,10 +1,14 @@
 // Colophon
 //
 
-$colophon-background-color: #31383c!default;
-$colophon-color: #ffffff!default;
+$colophon-background-color: #f9f9f9!default;
+$colophon-color: inherit!default;
 
 .colophon {
   background-color: $colophon-background-color;
   color: $colophon-color;
+
+  a {
+    color: inherit;
+  }
 }
