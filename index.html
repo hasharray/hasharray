@@ -3,19 +3,19 @@ layout: default
 title: Home
 ---
 
-<ul class="post-list">
-  {% assign items = site.tutorials | where: "layout", "post" %}
+<ul class="tutorial-list">
+  {% assign items = site.tutorials | where: "layout", "tutorial" %}
 
   {% for item in items %}
-    <li class="post">
-      <h1 class="post-title">
+    <li class="tutorial">
+      <h1 class="tutorial-title">
         <a href="{{ item.url | prepend: site.baseurl }}">
           {{ item.title }}
         </a>
       </h1>
 
       {% if item.date %}
-        <time datetime="{{ item.date | date_to_xmlschema }}" class="post-date">{{ item.date | date_to_string }}</time>
+        <time datetime="{{ item.date | date_to_xmlschema }}" class="tutorial-date">{{ item.date | date_to_string }}</time>
       {% endif %}
 
       {{ item.content | markdownify | split: "</p>" | first }}

@@ -15,7 +15,7 @@
         @import "layout";
         @import "logo";
         @import "masthead";
-        @import "post";
+        @import "tutorial";
         @import "pagination";
         @import "advert";
         @import "colophon";
@@ -39,16 +39,7 @@
     {% endif %}
 
     <main class="content">
-      <section class="content-main">
-        {{ content }}
-      </section>
-
-      {% if site.google_ad_client %}
-        <aside class="content-sidebar">
-          {% include google_ad.html slot="1822724824" %}
-          {% include google_ad.html slot="1403922425" %}
-        </aside>
-      {% endif %}
+      {{ content }}
     </main>
 
     {% include colophon.html %}

@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: tutorial 
 title: Tracking Outbound Forms and Links with Google Analytics
 ---
 
