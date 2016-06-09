@@ -17,7 +17,7 @@ We need to store our tracking id, putting it in the site's `_config.yml` file
 is a good place to do so.
 
 ```yaml
-google_tracking_id: UA-XXXXXX-X
+google_tracking_id: UA-XXXXX-Y
 ```
 
 ## Including the Google Analytics Script
