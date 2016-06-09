@@ -28,8 +28,13 @@
       {% include google_adsense.html %}
     {% endif %}
 
-    {% feed_meta %}
-    {% seo %}
+    {% if site.gems contains "jekyll-feed" %}
+      {% feed_meta %}
+    {% endif %}
+
+    {% if site.gems contains "jekyll-seo-tag" %}
+      {% seo %}
+    {% endif %}
   </head>
 
   <body class="container">
