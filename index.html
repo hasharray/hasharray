@@ -4,7 +4,7 @@ title: Home
 ---
 
 <ul class="post-list">
-  {% assign items = site.pages | where: "layout", "post" %}
+  {% assign items = site.tutorials | where: "layout", "post" %}
 
   {% for item in items %}
     <li class="post">

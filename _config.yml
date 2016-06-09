@@ -4,6 +4,10 @@ logo: /logo.png
 
 permalink: /:categories/:slug
 
+collections:
+  tutorials:
+    output: true
+
 # Social settings
 twitter:
   username: webdevelninja
