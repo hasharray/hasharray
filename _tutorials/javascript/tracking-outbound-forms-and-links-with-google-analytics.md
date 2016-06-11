@@ -15,7 +15,7 @@ number of times outbound affiliate links are clicked.
 
 Google Analytics actually supports plugins which can be used to extend its
 capabilities. These plugins can be written by anyone but Google does provide
-a few themselves and and one of these is called "autotrack" which does
+a few themselves and and one of these is called *autotrack* which does
 everything we need.
 
 The autotrack plugin is actually a collection of plugins which deal with automatic and
@@ -23,8 +23,8 @@ declarative event tracking, two of these are "outboundFormTracker" and
 "outboundLinkTracker" which deal with automatic form and link tracking
 respectivly.
 
-To enable the "autotrack" plugin we just need to push a `require` onto the
-tracker stack with the plugin name.
+To enable the autotrack plugin we just need to push a `require` call onto the
+tracker queue with the plugin name.
 
 ```html
 <script type="text/javascript">
@@ -39,10 +39,16 @@ tracker stack with the plugin name.
 <script async src='path/to/autotrack.js'></script>
 ```
 
+Autotrack is hosted on on various content delivery networks including
+[cdnjs.com](https://cdnjs.com/libraries/autotrack). If you want to host it
+yourself you can get it from [Google Analytics on
+GitHub](https://github.com/googleanalytics/autotrack)
+
 ## Conclusion
 
-The "autotrack" plugin provides a really easy and clean way to enable many
+The Google Analytics autotrack plugin provides a really easy and clean way to enable many
 common cases of event tracking, it has more functionality than what is covered
-here so make sure to [check out the
-documentation](https://github.com/googleanalytics/autotrack) for more advanced
+here so make sure to [check out the documentation](https://github.com/googleanalytics/autotrack) for more advanced
 usage.
+
+
