@@ -49,7 +49,7 @@
 
     {% include colophon.html %}
 
-    {% if site.google_tracking_id %}
+    {% if site.google_tracking_id and site.environment != 'development' %}
       {% include google_analytics.html %}
     {% endif %}
 
