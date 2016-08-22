@@ -1,5 +1,5 @@
 # Site settings
-title: Web Development Ninja
+title: Hash Array
 logo: /logo.png
 
 permalink: /:categories/:slug
@@ -10,16 +10,16 @@ collections:
 
 # Social settings
 twitter:
-  username: webdevelninja
+  username: hasharray
 
 facebook:
   publisher: 472349466295241
 
 social:
   links:
-    - https://github.com/webdevelopmentninja
-    - https://twitter.com/webdevelopninja
-    - https://facebook.com/Web-Development-Ninja-472349466295241/
+    - https://github.com/hasharray
+    - https://twitter.com/hasharray
+    - https://facebook.com/hasharray
 
 # Google settings
 google_tracking_id: UA-77924009-2
@@ -27,7 +27,6 @@ google_ad_client: ca-pub-3538270718430385
 
 gems:
   - jekyll-feed
-  - jekyll-gist
   - jekyll-paginate
   - jekyll-seo-tag
   - jekyll-sitemap
