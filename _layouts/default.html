@@ -24,10 +24,6 @@
       {{ style | scssify | trim }}
     </style>
 
-    {% if site.google_ad_client %}
-      {% include google_adsense.html %}
-    {% endif %}
-
     {% if site.gems contains "jekyll-feed" %}
       {% feed_meta %}
     {% endif %}
@@ -39,9 +35,6 @@
 
   <body class="container">
     {% include masthead.html %}
-    {% if site.google_ad_client %}
-      {% include google_ad.html slot="6811327623" %}
-    {% endif %}
 
     <main class="content">
       {{ content }}
