@@ -1,5 +1,4 @@
 ---
-layout: tutorial 
 title: Adding Google Analytics to a Jekyll Website
 ---
 

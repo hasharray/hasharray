@@ -1,5 +1,4 @@
 ---
-layout: tutorial 
 title: Inlining Critical Above the Fold Styles in Jekyll
 ---
 

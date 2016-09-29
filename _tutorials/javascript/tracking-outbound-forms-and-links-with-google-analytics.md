@@ -1,7 +1,5 @@
 ---
-layout: tutorial
 title: Tracking Outbound Forms and Links with Google Analytics
-published: true
 ---
 In this tutorial, we will be taking a look at how we can track outbound links
 with Google Analytics.
