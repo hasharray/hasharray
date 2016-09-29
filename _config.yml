@@ -30,6 +30,6 @@ google_ad_client: ca-pub-3538270718430385
 
 gems:
   - jekyll-feed
-  - jekyll-paginate
   - jekyll-seo-tag
   - jekyll-sitemap
+  - jekyll-github-metadata
