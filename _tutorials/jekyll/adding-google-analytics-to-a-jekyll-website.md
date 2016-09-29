@@ -26,7 +26,6 @@ the file `google_analytics.html`.
 
 The contents of this file will be the following.
 
-{% raw %}
 ```liquid
 <script type="text/javascript">
   window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
@@ -36,11 +35,9 @@ The contents of this file will be the following.
 </script>
 <script async src='https://www.google-analytics.com/analytics.js'></script>
 ```
-{% endraw %}
 
 We can then include this in our main layout.
 
-{% raw %}
 ```liquid
 <body>
 {% if site.google_tracking_id %}
@@ -48,7 +45,6 @@ We can then include this in our main layout.
 {% endif %}
 </body>
 ```
-{% endraw %}
 
 ## Disabling Analytics During Development
 
@@ -59,13 +55,11 @@ development.
 To do this, we can just check if the `site.environment` variable is set to
 development or not.
 
-{% raw %}
 ```liquid
 {% if site.google_tracking_id and site.environment != 'development' %}
   {% include google_analytics.html %}
 {% endif %}
 ```
-{% endraw %}
 
 ## Conclusion
 

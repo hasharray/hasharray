@@ -25,14 +25,12 @@ are within the `_includes` directory, which means for plain CSS stylesheets we
 can inline them by adding a `<style>` tag containing the relevant includes to
 the document's `<head>` section.
 
-{% raw %}
 ```liquid
 <style type="text/css">
   {% include 'base.css' %}
   {% include 'masthead.css' %}
 </style>
 ```
-{% endraw %}
 
 ## Inlining SCSS with `include`
 
@@ -42,7 +40,6 @@ pass the content through the `scssify` filter.
 We can do this by capturing the relevant includes in a variable before passing
 it to the filter.
 
-{% raw %}
 ```liquid
 <style type="text/css">
   {% capture style %}
@@ -53,7 +50,6 @@ it to the filter.
   {{ style | scssify }}
 </style>
 ```
-{% endraw %}
 
 
 ## Inlining SASS with `include`
@@ -66,7 +62,6 @@ We can also replace our `include` statements with SASS `import` statements,
 which will inline the styles found in the `_sass` directory instead of the
 `_includes` directory.
 
-{% raw %}
 ```liquid
 <style type="text/css">
   {% capture style %}
@@ -77,7 +72,6 @@ which will inline the styles found in the `_sass` directory instead of the
   {{ style | sassify }}
 </style>
 ```
-{% endraw %}
 
 ## Loading Stylesheets
 
@@ -89,14 +83,12 @@ We might have fonts and other non critical styles that we still need to load.
 We can load these additional styles by adding them near the closing `</body>`
 tag of the document.
 
-{% raw %}
 ```liquid
 <body>
   <link rel="stylesheet" type="text/css" src="{{ "/icons.css" | prepend: site.baseurl }}"/>
   <link rel="stylesheet" type="text/css" src="{{ "/icons.css" | prepend: site.baseurl }}"/>
 </body>
 ```
-{% endraw %}
 
 ## Conclusion
 
