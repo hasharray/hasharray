@@ -12,10 +12,6 @@ published: true
         </a>
       </h1>
 
-      {% if tutorial.date %}
-        <time datetime="{{ tutorial.date | date_to_xmlschema }}" class="tutorial-date">{{ tutorial.date | date_to_string }}</time>
-      {% endif %}
-
       {{ tutorial.content | markdownify | split: "</p>" | first }}
     </li>
   {% endfor %}
