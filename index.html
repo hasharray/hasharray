@@ -1,18 +1,18 @@
 ---
 layout: default
 title: Home
-published: true
 ---
-<ul class="tutorial-list">
-  {% for tutorial in site.tutorials %}
-    <li class="tutorial">
-      <h1 class="tutorial-title">
+
+<ul>
+  {% for tutorial in site.tutorials limit: 5 %}
+    <li>
+      <h4>
         <a href="{{ tutorial.url | prepend: site.baseurl }}">
           {{ tutorial.title }}
         </a>
-      </h1>
+      </h4>
 
       {{ tutorial.content | markdownify | split: "</p>" | first }}
     </li>
   {% endfor %}
-</div>
+</ul>

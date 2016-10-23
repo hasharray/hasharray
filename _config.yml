@@ -1,5 +1,6 @@
 # Site settings
 title: Hash Array
+tagline: Web Development, Game Development, Geekisms
 logo: /logo.png
 
 permalink: /:categories/:slug
@@ -44,9 +45,8 @@ social:
     - https://twitter.com/hasharray
     - https://facebook.com/hasharray
 
-# Google settings
-google_tracking_id: UA-83017016-1
-google_ad_client: ca-pub-3538270718430385
+# Analytics settings
+analytics_id: UA-83017016-1
 
 gems:
   - jekyll-feed
