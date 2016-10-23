@@ -2,15 +2,8 @@
 layout: default
 ---
 
-<section class="content-main">
-  <article class="tutorial">
-    <h1 class="tutorial-title">{{ page.title }}</h1>
+<article class="tutorial">
+  <h1>{{ page.title }}</h1>
 
-    {{ content }}
-  </article>
-
-  {% include disqus_comments.html %}
-</section>
-
-<section class="content-sidebar">
-</section>
+  {{ content }}
+</article>

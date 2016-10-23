@@ -1,4 +1,6 @@
-// Base resets
+// Body resets
+//
+// Update the foundational and global aspects of the page.
 
 * {
   -webkit-box-sizing: border-box;
@@ -13,19 +15,24 @@ body {
 }
 
 html {
-  font-family: Helvetica Neue;
-  font-size: 16px;
-  line-height: 1.5em;
+  font-family: $root-font-family;
+  font-size: $root-font-size;
+  line-height: $root-line-height;
+
+  @media (min-width: $large-breakpoint) {
+    font-size: $large-font-size;
+  }
 }
 
 body {
-  color: #333333;
-  background-color: #ffffff;
+  color: $body-color;
+  background-color: $body-bg;
   -webkit-text-size-adjust: 100%;
       -ms-text-size-adjust: 100%;
 }
 
 a {
+  color: $link-color;
   text-decoration: none;
 
   &:hover,

@@ -1,31 +1,11 @@
 // Layout
 //
+// Styles for managing the structural hierarchy of the site.
 
 .container {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  min-height: 100vh;
-}
-
-.content {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-
-  flex: 1;
-}
-
-.content-main {
-  flex: 0 0 40em;
-}
-
-.content-sidebar {
-  flex: 0 0 300px;
-}
-
-.masthead,
-.content,
-.colophon {
-  padding: 2em 4em;
+  max-width: 38rem;
+  padding-left:  1.5rem;
+  padding-right: 1.5rem;
+  margin-left:  auto;
+  margin-right: auto;
 }
