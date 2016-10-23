@@ -43,8 +43,8 @@ it to the filter.
 ```liquid
 <style type="text/css">
   {% capture style %}
-  	{% include 'base.scss' %}
-  	{% include 'masthead.scss' %}
+    {% include 'base.scss' %}
+    {% include 'masthead.scss' %}
   {% endcapture %}
 
   {{ style | scssify }}
