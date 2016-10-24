@@ -52,7 +52,7 @@ it to the filter.
 ```
 
 
-## Inlining SASS with `include`
+## Inlining SASS with `import`
 
 The SASS version is essentially identical to the SCSS version above, with the
 exception that we need to filter the style content through `sassify` instead of
