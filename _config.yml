@@ -27,7 +27,7 @@ defaults:
       path: ""
       type: tutorials
     values:
-      layout: tutorial
+      layout: page
 
 # Social settings
 disqus:
@@ -46,10 +46,12 @@ social:
     - https://facebook.com/hasharray
 
 # Analytics settings
-analytics_id: UA-83017016-1
+google_analytics: UA-83017016-1
 
 gems:
   - jekyll-feed
   - jekyll-seo-tag
   - jekyll-sitemap
   - jekyll-github-metadata
+
+theme: minima
