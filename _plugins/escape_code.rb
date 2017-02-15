@@ -1,6 +1,5 @@
 require 'jekyll'
 
-
 module Jekyll
   module EscapeCode
     Jekyll::Hooks.register [:documents, :pages, :posts], :pre_render do |item|
@@ -24,7 +23,7 @@ module Jekyll
     end
 
     def escape(page)
-      ext = page.ext.downcase
+      ext = (page.data["ext"] || page.ext).downcase
       content = page.content.encode!("UTF-8")
       md_ext = %w{.markdown .mdown .mkdn .md .mkd .mdwn .mdtxt .mdtext}
 
