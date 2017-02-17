@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Tracking Outbound Forms and Links with Google Analytics</title>
+  <meta name="description" content="In this tutorial, we will be taking a look at how we can track outbound links with Google Analytics.">
+
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="canonical" href="/tutorials/javascript/tracking-outbound-forms-and-links-with-google-analytics">
+  <link rel="alternate" type="application/rss+xml" title="Hash Array" href="/feed.xml">
+  
+  
+</head>
+
+
+  <body>
+
+    <header class="site-header" role="banner">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">Hash Array</a>
+
+    <nav class="site-nav">
+      <span class="menu-icon">
+        <svg viewBox="0 0 18 15" width="18px" height="15px">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </span>
+
+      <div class="trigger">
+        
+          
+        
+          
+          <a class="page-link" href="/">Home</a>
+          
+        
+          
+          <a class="page-link" href="/tutorials/">Tutorials</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Tracking Outbound Forms and Links with Google Analytics</h1>
+  </header>
+
+  <div class="post-content">
+    <p>In this tutorial, we will be taking a look at how we can track outbound links
+with Google Analytics.</p>
+
+<p>The default Google Analytics tracking snippet only tracks when page views by sending a page view event which is good data to have but there are times when we need more information about certain events, for example the number of times outbound links are clicked or the number of form submissions made on a certain page.</p>
+
+<h2 id="automatic-tracking">Automatic Tracking</h2>
+
+<p>The best way to do this is with plugins, Google Analytics actually has built-in support for plugins which can be used to extend its capabilities.</p>
+
+<p>These plugins can be written by anyone but Google does provide a few themselves, one of these is called <em>autotrack</em> which does everything we need in this case saving us from having to maintain this code.</p>
+
+<p>The autotrack plugin is actually a collection of plugins which deal with automatic and declarative event tracking, two of these are “outboundFormTracker” and “outboundLinkTracker” which deal with automatic form and link tracking respectivly.</p>
+
+<p>To enable the autotrack plugin we need to push a <code class="highlighter-rouge">require</code> call onto the tracker queue with the plugin name and load the script that contains the plugin.</p>
+
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span><span class="nt">&gt;</span>
+  <span class="nb">window</span><span class="p">.</span><span class="nx">ga</span><span class="o">=</span><span class="nb">window</span><span class="p">.</span><span class="nx">ga</span><span class="o">||</span><span class="kd">function</span><span class="p">(){(</span><span class="nx">ga</span><span class="p">.</span><span class="nx">q</span><span class="o">=</span><span class="nx">ga</span><span class="p">.</span><span class="nx">q</span><span class="o">||</span><span class="p">[]).</span><span class="nx">push</span><span class="p">(</span><span class="nx">arguments</span><span class="p">)};</span><span class="nx">ga</span><span class="p">.</span><span class="nx">l</span><span class="o">=+</span><span class="k">new</span> <span class="nb">Date</span><span class="p">;</span>
+
+  <span class="nx">ga</span><span class="p">(</span><span class="s1">'create'</span><span class="p">,</span> <span class="s1">'UA-XXXXX-Y'</span><span class="p">,</span> <span class="s1">'auto'</span><span class="p">);</span>
+  <span class="nx">ga</span><span class="p">(</span><span class="s1">'require'</span><span class="p">,</span> <span class="s1">'autotrack'</span><span class="p">);</span>
+  <span class="nx">ga</span><span class="p">(</span><span class="s1">'send'</span><span class="p">,</span> <span class="s1">'pageview'</span><span class="p">);</span>
+<span class="nt">&lt;/script&gt;</span>
+
+<span class="nt">&lt;script </span><span class="na">async</span> <span class="na">src=</span><span class="s">'https://www.google-analytics.com/analytics.js'</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">async</span> <span class="na">src=</span><span class="s">'path/to/autotrack.js'</span><span class="nt">&gt;&lt;/script&gt;</span>
+</code></pre>
+</div>
+
+<p>Autotrack is <em>currently</em> not hosted by Google themselves, but is available via various content delivery networks including <a href="https://cdnjs.com/libraries/autotrack">cdnjs.com</a>.</p>
+
+<p>The source code and releases for the Google Analytics Autotrack plugin are available via <a href="https://github.com/googleanalytics/autotrack">Google Analytics on GitHub</a>.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>The Google Analytics Autotrack plugin provides a really easy and clean way to enable many common cases of event tracking, it has more functionality than what is covered here so make sure to <a href="https://github.com/googleanalytics/autotrack">check out the documentation</a> for more advanced usage.</p>
+
+  </div>
+
+</article>
+
+      </div>
+    </main>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Hash Array</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li>
+            
+              Hash Array
+            
+            </li>
+            
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+        <ul class="social-media-list">
+          
+
+          
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-3">
+        <p></p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>

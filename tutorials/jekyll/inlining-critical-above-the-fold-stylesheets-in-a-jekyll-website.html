@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Inlining Critical Above the Fold Styles in Jekyll</title>
+  <meta name="description" content="In this tutorial we will be taking a look at how we can inline critical stylesheet rules that style content that appears above the fold in a Jekyll based web...">
+
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="canonical" href="/tutorials/jekyll/inlining-critical-above-the-fold-stylesheets-in-a-jekyll-website">
+  <link rel="alternate" type="application/rss+xml" title="Hash Array" href="/feed.xml">
+  
+  
+</head>
+
+
+  <body>
+
+    <header class="site-header" role="banner">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">Hash Array</a>
+
+    <nav class="site-nav">
+      <span class="menu-icon">
+        <svg viewBox="0 0 18 15" width="18px" height="15px">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </span>
+
+      <div class="trigger">
+        
+          
+        
+          
+          <a class="page-link" href="/">Home</a>
+          
+        
+          
+          <a class="page-link" href="/tutorials/">Tutorials</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Inlining Critical Above the Fold Styles in Jekyll</h1>
+  </header>
+
+  <div class="post-content">
+    <p>In this tutorial we will be taking a look at how we can inline critical
+stylesheet rules that style content that appears above the fold in a Jekyll
+based website.</p>
+
+<p>The problem we are trying to solve with this is that the browser cannot start
+rendering anything before all our external stylesheets have been loaded. Even
+if the entire document is loaded, while the stylesheets are still loading
+nothing will be displayed to the user.</p>
+
+<p>The idea with inlining styles for content that appears above the fold is that
+the browser will already have all the necessary information to start rendering
+immediately once it see’s the body tag without having to wait for any
+additional resources to load. This reduces the perceived load time for the user
+as they can start reading the top of the page rather much sooner in the loading
+process rather than staring at a white page.</p>
+
+<h2 id="inlining-css-with-include">Inlining CSS with <code class="highlighter-rouge">include</code></h2>
+
+<p>With Jekyll, We can inline entire files with the <code class="highlighter-rouge">include</code> tag as long as they
+are within the <code class="highlighter-rouge">_includes</code> directory, which means for plain CSS stylesheets we
+can inline them by adding a <code class="highlighter-rouge">&lt;style&gt;</code> tag containing the relevant includes to
+the document’s <code class="highlighter-rouge">&lt;head&gt;</code> section.</p>
+
+<div class="language-liquid highlighter-rouge"><pre class="highlight"><code>&lt;style type="text/css"&gt;
+  <span class="p">{%</span><span class="w"> </span><span class="nt">include</span><span class="w"> </span><span class="s1">'base.css'</span><span class="w"> </span><span class="p">%}</span>
+  <span class="p">{%</span><span class="w"> </span><span class="nt">include</span><span class="w"> </span><span class="s1">'masthead.css'</span><span class="w"> </span><span class="p">%}</span>
+&lt;/style&gt;
+</code></pre>
+</div>
+
+<h2 id="inlining-scss-with-include">Inlining SCSS with <code class="highlighter-rouge">include</code></h2>
+
+<p>With SCSS the process is nearly the same, the difference is that we need to
+pass the content through the <code class="highlighter-rouge">scssify</code> filter.</p>
+
+<p>We can do this by capturing the relevant includes in a variable before passing
+it to the filter.</p>
+
+<div class="language-liquid highlighter-rouge"><pre class="highlight"><code>&lt;style type="text/css"&gt;
+  <span class="p">{%</span><span class="w"> </span><span class="nt">capture</span><span class="w"> </span><span class="na">style</span><span class="w"> </span><span class="p">%}</span>
+    <span class="p">{%</span><span class="w"> </span><span class="nt">include</span><span class="w"> </span><span class="s1">'base.scss'</span><span class="w"> </span><span class="p">%}</span>
+    <span class="p">{%</span><span class="w"> </span><span class="nt">include</span><span class="w"> </span><span class="s1">'masthead.scss'</span><span class="w"> </span><span class="p">%}</span>
+  <span class="p">{%</span><span class="w"> </span><span class="nt">endcapture</span><span class="w"> </span><span class="p">%}</span>
+
+  <span class="p">{{</span><span class="w"> </span><span class="nv">style</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">scssify</span><span class="w"> </span><span class="p">}}</span>
+&lt;/style&gt;
+</code></pre>
+</div>
+
+<h2 id="inlining-sass-with-import">Inlining SASS with <code class="highlighter-rouge">import</code></h2>
+
+<p>The SASS version is essentially identical to the SCSS version above, with the
+exception that we need to filter the style content through <code class="highlighter-rouge">sassify</code> instead of
+<code class="highlighter-rouge">scssify</code></p>
+
+<p>We can also replace our <code class="highlighter-rouge">include</code> statements with SASS <code class="highlighter-rouge">import</code> statements,
+which will inline the styles found in the <code class="highlighter-rouge">_sass</code> directory instead of the
+<code class="highlighter-rouge">_includes</code> directory.</p>
+
+<div class="language-liquid highlighter-rouge"><pre class="highlight"><code>&lt;style type="text/css"&gt;
+  <span class="p">{%</span><span class="w"> </span><span class="nt">capture</span><span class="w"> </span><span class="na">style</span><span class="w"> </span><span class="p">%}</span>
+    @import 'base';
+    @import 'masthead';
+  <span class="p">{%</span><span class="w"> </span><span class="nt">endcapture</span><span class="w"> </span><span class="p">%}</span>
+
+  <span class="p">{{</span><span class="w"> </span><span class="nv">style</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">sassify</span><span class="w"> </span><span class="p">}}</span>
+&lt;/style&gt;
+</code></pre>
+</div>
+
+<h2 id="loading-stylesheets">Loading Stylesheets</h2>
+
+<p>As long as our stylesheets fit within <a href="https://developers.google.com/speed/docs/insights/mobile">the 14kb that Google
+recommends</a>, we can just inline all of our styles and we won’t have to do
+anything else, but that is not always the case.</p>
+
+<p>We might have fonts and other non critical styles that we still need to load.
+We can load these additional styles by adding them near the closing <code class="highlighter-rouge">&lt;/body&gt;</code>
+tag of the document.</p>
+
+<div class="language-liquid highlighter-rouge"><pre class="highlight"><code>&lt;body&gt;
+  &lt;link rel="stylesheet" type="text/css" src="<span class="p">{{</span><span class="w"> </span><span class="s2">"/icons.css"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">prepend</span><span class="p">:</span><span class="w"> </span>site.baseurl<span class="w"> </span><span class="p">}}</span>"/&gt;
+  &lt;link rel="stylesheet" type="text/css" src="<span class="p">{{</span><span class="w"> </span><span class="s2">"/icons.css"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">prepend</span><span class="p">:</span><span class="w"> </span>site.baseurl<span class="w"> </span><span class="p">}}</span>"/&gt;
+&lt;/body&gt;
+</code></pre>
+</div>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Inlining styles can be a very straight forward and simple way to optimise the
+time it takes to load a page, especially the perceived loading time by just
+a few steps.</p>
+
+<ul>
+  <li>Defer loading of none critical stylesheets.</li>
+  <li>Inline critical stylesheets in the <code class="highlighter-rouge">&lt;head&gt;</code> section of a document.</li>
+  <li>Check with <a href="https://developers.google.com/speed/pagespeed/insights/">Google PageSpeed Insights</a> to ensure that a page passes the critical stylesheets rule.</li>
+</ul>
+
+  </div>
+
+</article>
+
+      </div>
+    </main>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Hash Array</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li>
+            
+              Hash Array
+            
+            </li>
+            
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+        <ul class="social-media-list">
+          
+
+          
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-3">
+        <p></p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<url>
+<loc>/tutorials/javascript/tracking-outbound-forms-and-links-with-google-analytics</loc>
+<lastmod>2017-02-17T17:03:57+00:00</lastmod>
+</url>
+<url>
+<loc>/tutorials/jekyll/adding-google-analytics-to-a-jekyll-website</loc>
+<lastmod>2017-02-17T17:03:57+00:00</lastmod>
+</url>
+<url>
+<loc>/tutorials/jekyll/inlining-critical-above-the-fold-stylesheets-in-a-jekyll-website</loc>
+<lastmod>2017-02-17T17:03:57+00:00</lastmod>
+</url>
+<url>
+<loc>/404.html</loc>
+</url>
+<url>
+<loc>/</loc>
+</url>
+<url>
+<loc>/tutorials/</loc>
+</url>
+</urlset>
