@@ -1,18 +1,4 @@
 ---
-layout: default
+layout: home
 title: Home
 ---
-
-<ul>
-  {% for tutorial in site.tutorials limit: 5 %}
-    <li>
-      <h4>
-        <a href="{{ tutorial.url | prepend: site.baseurl }}">
-          {{ tutorial.title }}
-        </a>
-      </h4>
-
-      {{ tutorial.content | markdownify | split: "</p>" | first }}
-    </li>
-  {% endfor %}
-</ul>
